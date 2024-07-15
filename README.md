@@ -14,6 +14,7 @@ Ask Dad is an AI-powered assistant application designed to provide users with re
 - React
 - MUI
 - AWS S3
+- langGraph
 
 ### Backend:
 - Python
