@@ -2,18 +2,20 @@
 
 Ask Dad is an AI-powered assistant application designed to provide users with reliable advice and answers on various topics. 
 
-Ex: "How do I fix the hole in the wall?" 
-Answer: 
-- https://www.holeinthewall.com/8-frequently-asked-questions-about-drywall-repair/
-- https://www.thisoldhouse.com/walls/21015080/how-to-fix-a-hole-in-the-wall
-- https://www.youtube.com/watch?v=qvtoikKG318
+### Example Query:
+**Question:** "How do I fix the hole in the wall?"  
+**Answer:**  
+  1. **Title:** [8 Frequently Asked Questions About Drywall Repair - Hole In The Wall](https://www.holeinthewall.com/8-frequently-asked-questions-about-drywall-repair/)
+  2. **Title:** [How To Fix a Hole in the Wall - This Old House](https://www.thisoldhouse.com/walls/21015080/how-to-fix-a-hole-in-the-wall)
 
-## Frontend:
+## Tech Stack
+
+### Frontend:
 - React
 - MUI
 - AWS S3
 
-## Backend:
+### Backend:
 - Python
 - Django
 - AWS EC2
