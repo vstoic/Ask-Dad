@@ -2,7 +2,8 @@ from langchain_openai import ChatOpenAI
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolExecutor
-from langchain_core.messages import HumanMessage, FunctionMessage
+from langchain_core.messages import HumanMessage, FunctionMessage, BaseMessage
+from langchain_core.utils.function_calling import convert_to_openai_function
 from typing import TypedDict, Annotated, Sequence
 import operator
 import json
@@ -13,7 +14,7 @@ tool_executor = ToolExecutor(tools)
 
 # Define model
 model = ChatOpenAI(temperature=0, streaming=True)
-functions = [format_tool_to_openai_function(t) for t in tools]
+functions = [convert_to_openai_function(t) for t in tools]
 model = model.bind_functions(functions)
 
 # Define agent state

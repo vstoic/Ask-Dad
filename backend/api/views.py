@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from ..langgraph_workflow import handle_query
+from langgraph_workflow import handle_query
 import json
 
 @csrf_exempt
