@@ -2,26 +2,28 @@ from langchain_openai import ChatOpenAI
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolExecutor
-from langchain_core.messages import HumanMessage, FunctionMessage, BaseMessage
+from langchain_core.messages import HumanMessage, FunctionMessage, BaseMessage, SystemMessage
 from langchain_core.utils.function_calling import convert_to_openai_function
 from typing import TypedDict, Annotated, Sequence
 import operator
 import json
 
-# Define tools
+
+SYSTEM_PROMPT = "You are playing the role of a knowledgeable and friendly dad. Your goal is to provide helpful and reliable advice on various topics, just like a wise father would."
+
+# tools
 tools = [TavilySearchResults(max_results=1)]
 tool_executor = ToolExecutor(tools)
 
-# Define model
+# model
 model = ChatOpenAI(temperature=0, streaming=True)
 functions = [convert_to_openai_function(t) for t in tools]
 model = model.bind_functions(functions)
 
-# Define agent state
 class AgentState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], operator.add]
 
-# Define functions for nodes
+# Define functions
 def should_continue(state):
     last_message = state['messages'][-1]
     if "function_call" not in last_message.additional_kwargs:
@@ -53,6 +55,11 @@ workflow.add_edge('action', 'agent')
 app = workflow.compile()
 
 def handle_query(query):
-    inputs = {"messages": [HumanMessage(content=query)]}
-    result = app.invoke(inputs)
+    initial_state = {
+        "messages": [
+            SystemMessage(content=SYSTEM_PROMPT),
+            HumanMessage(content=query)
+        ]
+    }
+    result = app.invoke(initial_state)
     return result

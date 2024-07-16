@@ -1,7 +1,33 @@
-.env
+# Distribution / packaging
+.Python
+env/
 venv/
+ENV/
+env.bak/
+venv.bak/
+.build/
+dist/
+build/
+eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
 # Django
 *.log
 local_settings.py
 db.sqlite3
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
