@@ -11,7 +11,7 @@ const LangGraphQuery = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post('/api/query/', { query: input });
+      const result = await axios.post('http://localhost:8000/api/query/', { query: input });
       setResponse(result.data);
       setError('');
     } catch (err) {
@@ -39,7 +39,7 @@ const LangGraphQuery = () => {
           <pre>{JSON.stringify(response, null, 2)}</pre>
         </div>
       )}
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {error && <div style={{ color: 'skyblue' }}>{error}</div>}
     </div>
   );
 };
