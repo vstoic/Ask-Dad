@@ -27,6 +27,7 @@ The agents handle their tasks effectively by:
 ### Frontend
 - React
 - MUI
+- Axios
 - AWS S3
 
 ### Backend
@@ -34,7 +35,7 @@ The agents handle their tasks effectively by:
 - Django
 - AWS EC2
 - LangGraph: Utilize the LangGraph framework to build and design the workflow of the AI agents.
-   - Useful resource: AI Agentic course
+   - Useful resource: [AI Agentic course](https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/)
 - Tavily API: Employ the Tavily API to enhance the agents’ reliability, incorporating the idea of Retrieval-Augmented Generation (RAG) into your application.
 
 ## Workflow Breakdown

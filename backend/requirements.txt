@@ -6,3 +6,4 @@ tavily-python
 django
 python-dotenv
 djangorestframework
+django-cors-headers
